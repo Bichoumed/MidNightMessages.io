@@ -9,10 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800;1000&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8C%3C/text%3E%3C/svg%3E">
+
 <style>
 :root{
   --bg1:#0b0b22; --bg2:#1a1030; --ink:#f5f6ff; --muted:#cdd0f2; --line:#2c2c52;
-  --card:#0f1030cc; --blur:14px; --pink:#ff7ecf; --blue:#7aa2ff; --gold:#f6d365; --rose:#ff5e8e; --vio:#a78bfa;
+  --card:#242430cc; --blur:14px; --pink:#ff7ecf; --blue:#7aa2ff; --gold:#f6d365; --rose:#ff5e8e; --vio:#a78bfa;
   --accent-grad: conic-gradient(from 120deg, var(--pink), var(--blue), var(--gold));
 }
 @media (prefers-color-scheme: light){
@@ -20,13 +21,15 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%;}
-body{margin:0; color:var(--ink); font-family:'Cairo',system-ui,Segoe UI,Roboto,Arial; background:
-            radial-gradient(1200px 800px at 15% 10%, rgba(255,126,207,.18), transparent 60%),
-            radial-gradient(1200px 800px at 85% 90%, rgba(122,162,255,.18), transparent 60%),
-            linear-gradient(160deg, var(--bg1), var(--bg2));
+body{
+  margin:0; color:var(--ink); font-family:'Cairo',system-ui,Segoe UI,Roboto,Arial;
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgba(255,126,207,.18), transparent 60%),
+    radial-gradient(1200px 800px at 85% 90%, rgba(122,162,255,.18), transparent 60%),
+    linear-gradient(160deg, var(--bg1), var(--bg2));
   overflow-x:hidden; position:relative;
 }
-/* نجوم خفيفة */
+/* نجوم */
 #stars{position:fixed; inset:0; pointer-events:none; opacity:.6}
 /* حبيبات */
 #grain{position:fixed; inset:0; pointer-events:none; mix-blend-mode:soft-light; opacity:.14; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.6"/></svg>');}
@@ -34,17 +37,27 @@ body{margin:0; color:var(--ink); font-family:'Cairo',system-ui,Segoe UI,Roboto,A
 .container{width:min(1150px,92vw); margin: clamp(18px, 4vw, 46px) auto;}
 .header{display:flex; align-items:center; justify-content:space-between; gap:16px;}
 .brand{display:flex; align-items:center; gap:14px;}
-.logo{width:56px; height:56px; border-radius:16px; display:grid; place-items:center; font-size:26px; 
+.logo{width:56px; height:56px; border-radius:16px; display:grid; place-items:center; font-size:26px;
   background: var(--accent-grad); box-shadow:0 10px 30px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.08) inset;}
 .brand h1{font-family:'Playfair Display',serif; font-weight:700; letter-spacing:.4px; font-size:clamp(24px,3.2vw,36px); margin:0;}
 .tagline{margin:.15rem 0 0; color:var(--muted); font-weight:600}
 .actions{display:flex; gap:10px;}
-.btn{border:1px solid rgba(255,255,255,.15); background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04)); color:var(--ink); padding:10px 16px; border-radius:999px; font-weight:800; cursor:pointer; backdrop-filter: blur(8px); box-shadow:0 10px 30px rgba(0,0,0,.15);} .btn:hover{transform: translateY(-1px);} .btn:active{transform:translateY(0)}
+.btn{
+  border:1px solid rgba(255,255,255,.15);
+  background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04));
+  color:var(--ink); padding:10px 16px; border-radius:999px; font-weight:800; cursor:pointer;
+  backdrop-filter: blur(8px); box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+.btn:hover{transform: translateY(-1px);} .btn:active{transform:translateY(0)}
 .primary{border-color:transparent; background:linear-gradient(90deg, var(--pink), var(--blue)); color:white}
 
 .hero{margin:26px 0 16px; display:grid; grid-template-columns: 1.05fr .95fr; gap:22px;}
 @media (max-width: 980px){ .hero{grid-template-columns: 1fr;}}
-.card{position:relative; isolation:isolate; border-radius:26px; background:var(--card); border:1px solid rgba(255,255,255,.18); backdrop-filter: blur(var(--blur)); box-shadow: 0 22px 60px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.08) inset; overflow:hidden;}
+.card{
+  position:relative; isolation:isolate; border-radius:26px; background:var(--card);
+  border:1px solid rgba(255,255,255,.18); backdrop-filter: blur(var(--blur));
+  box-shadow: 0 22px 60px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.08) inset; overflow:hidden;
+}
 .card .glow{position:absolute; inset:-2px; background: radial-gradient(420px 160px at var(--mx,80%) var(--my,30%), rgba(138,92,246,.3), transparent 60%); filter: blur(22px); z-index:-1;}
 
 /* Today + TIMER */
@@ -53,7 +66,6 @@ body{margin:0; color:var(--ink); font-family:'Cairo',system-ui,Segoe UI,Roboto,A
 .titleBig{font-family:'Playfair Display',serif; font-size:clamp(22px,3.2vw,34px); line-height:1.6; margin:6px 0 0;}
 .kicker{display:flex; align-items:center; gap:10px; color:var(--muted); font-weight:700}
 .kicker .chip{font-variant-numeric:tabular-nums; border:1px solid var(--line); padding:5px 12px; border-radius:999px; background:linear-gradient(0deg, rgba(255,255,255,.08), rgba(255,255,255,.02));}
-.meta{display:flex; gap:8px; align-items:center; color:var(--muted); font-weight:700}
 
 .timer{--size: 230px; position:relative; width:var(--size); height:var(--size); place-self:center; display:grid; place-items:center}
 .ring{position:absolute; inset:0; border-radius:50%;}
@@ -134,7 +146,7 @@ textarea{min-height:220px; resize:vertical}
           </div>
           <h2 class="titleBig" id="today">تصل رسالة القلب عند منتصف الليل ✨</h2>
           <div class="sep"></div>
-     <div class="quote"> من بُشرى إلى محمد ما بيني وبينك وعدُ ليلٍ لطيف… يكتمل برسالة حب.</div>
+          <div class="quote"> من بُشرى إلى محمد ما بيني وبينك وعدُ ليلٍ لطيف… يكتمل برسالة حب.</div>
         </div>
         <div class="timer" aria-label="العد التنازلي لمنتصف الليل">
           <div class="ring h"></div>
@@ -224,10 +236,9 @@ const DEFAULT_MESSAGES = [
   "أحبنا… اليوم وغدًا وإلى الأبد. فأنا أؤمن أن قصتنا أكبر من الظروف، وأن حبنا سيبقى حيًا مهما مرّ الزمان."
 ];
 
-const DEFAULT_START = (()=>{ const d=new Date(); d.setHours(0,0,0,0); return d; })();
-
+/* =================== KEYS =================== */
 const KEY_MSGS = 'mr.v3.msgs';
-const KEY_START = 'mr.v3.start';
+const KEY_START_DATE = 'mr.v3.start_date'; // YYYY-MM-DD in chosen TZ
 const KEY_TZ = 'mr.v3.tz';
 const KEY_SRC = 'mr.v3.src';
 
@@ -237,13 +248,23 @@ function zonedNow(tz){
   const p = Object.fromEntries(f.formatToParts(new Date()).map(x=>[x.type,x.value]));
   return new Date(`${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:${p.second}`);
 }
+function ymdInTZ(tz, d){
+  const f = new Intl.DateTimeFormat('en-CA', { timeZone: tz, year:'numeric', month:'2-digit', day:'2-digit' });
+  const p = Object.fromEntries(f.formatToParts(d).map(x => [x.type, x.value]));
+  return `${p.year}-${p.month}-${p.day}`; // YYYY-MM-DD
+}
+function ymdToUTCDate(ymd){
+  const [Y,M,D] = ymd.split('-').map(Number);
+  return new Date(Date.UTC(Y, M-1, D)); // fixed midnight UTC
+}
+function dayIndexFromYMD(nowYMD, startYMD){
+  return Math.max(0, Math.floor((ymdToUTCDate(nowYMD) - ymdToUTCDate(startYMD)) / 86400000));
+}
 function fmtFull(d, tz){ return new Intl.DateTimeFormat('ar-EG',{dateStyle:'full', timeStyle:'short', timeZone:tz}).format(d) }
-function dayIndex(now, start){ return Math.max(0, Math.floor((now - start)/86400000)); }
 function nextMidnight(now){ const n=new Date(now); n.setHours(24,0,0,0); return n }
 function $(id){ return document.getElementById(id) }
 function save(k,v){ localStorage.setItem(k, typeof v==='string'? v : JSON.stringify(v)) }
-function load(k,fallback){ try{ const v=localStorage.getItem(k); if(!v) return fallback; return JSON.parse(v) }catch{ return localStorage.getItem(k)||fallback }
-}
+function load(k,fallback){ try{ const v=localStorage.getItem(k); if(!v) return fallback; return JSON.parse(v) }catch{ return localStorage.getItem(k)||fallback } }
 function download(filename, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'application/json'})); a.download=filename; a.click(); URL.revokeObjectURL(a.href) }
 
 /* =================== REMOTE LOADING =================== */
@@ -252,11 +273,9 @@ async function fetchMessagesFrom(url){
   if(!res.ok) throw new Error('HTTP '+res.status);
   const data = await res.json();
   if(!Array.isArray(data.messages)) throw new Error('Invalid schema: missing messages[]');
-  return {
-    messages: data.messages.map(String),
-    start: data.start_date ? new Date(data.start_date+'T00:00:00') : DEFAULT_START,
-    tz: data.timezone || DEFAULT_TZ
-  };
+  const tz = data.timezone || DEFAULT_TZ;
+  const startYMD = (data.start_date && /\d{4}-\d{2}-\d{2}/.test(data.start_date)) ? data.start_date : ymdInTZ(tz, new Date());
+  return { messages: data.messages.map(String), start_date: startYMD, tz };
 }
 
 async function tryLoadExternal(){
@@ -266,9 +285,9 @@ async function tryLoadExternal(){
   const candidates = [explicit, stored, 'messages.json'].filter(Boolean);
   for(const url of candidates){
     try{
-      const {messages,start,tz} = await fetchMessagesFrom(url);
-      save(KEY_MSGS, messages); save(KEY_START, start.toISOString()); save(KEY_TZ, tz); save(KEY_SRC, url);
-      return {messages,start,tz, src:url};
+      const {messages,start_date,tz} = await fetchMessagesFrom(url);
+      save(KEY_MSGS, messages); save(KEY_START_DATE, start_date); save(KEY_TZ, tz); save(KEY_SRC, url);
+      return {messages, start_date, tz, src:url};
     }catch(e){ /* continue trying */ }
   }
   return null; // fall back to local/defaults
@@ -277,7 +296,7 @@ async function tryLoadExternal(){
 /* =================== STATE =================== */
 let TZ = load(KEY_TZ, DEFAULT_TZ);
 let MESSAGES = load(KEY_MSGS, DEFAULT_MESSAGES);
-let START = (()=>{ const raw = load(KEY_START, DEFAULT_START.toISOString()); const d=new Date(raw); return isNaN(+d)? DEFAULT_START : d; })();
+let START_YMD = load(KEY_START_DATE, ymdInTZ(TZ, new Date())); // default: today in TZ
 let SRC = load(KEY_SRC, null);
 
 /* =================== RENDER =================== */
@@ -285,10 +304,15 @@ const $today=$('today'), $chipNum=$('chipNum'), $dateNow=$('dateNow'), $count=$(
 const timerEl = document.querySelector('.timer');
 let lastDay=-1;
 
+/* On day 0: show Day 2 and keep Day 1 open in archive. Afterwards, normal daily progression. */
+function computeUnlockedIndex(nowYMD){
+  const base = dayIndexFromYMD(nowYMD, START_YMD);
+  const offset = (base === 0 ? 1 : 0); // only the first day shows the next message
+  const idx = Math.min(base + offset, MESSAGES.length - 1);
+  return Math.max(0, idx);
+}
+
 function setTimerProgress(msUntil){
-  const total = 24*3600*1000;
-  const now = total - msUntil; // elapsed today
-  // remaining time -> ring fill (reverse feels nicer)
   const sec = Math.floor(msUntil/1000)%60;
   const min = Math.floor(msUntil/60000)%60;
   const hrs = Math.floor(msUntil/3600000);
@@ -300,27 +324,29 @@ function setTimerProgress(msUntil){
   timerEl.style.setProperty('--p-sec',  100 - pSec);
 }
 
+function buildArchive(unlocked){
+  $archive.innerHTML='';
+  for(let i=0;i<MESSAGES.length;i++){
+    const el=document.createElement('div'); el.className='item'+(i<=unlocked?'':' locked');
+    const title=document.createElement('h4'); title.textContent = (i<=unlocked?`اليوم ${i+1}`:'مغلق');
+    const p=document.createElement('p'); p.textContent = i<=unlocked? MESSAGES[i] : 'تُفتح عند منتصف الليل ✨';
+    el.appendChild(title); el.appendChild(p);
+    if(i>unlocked){ const veil=document.createElement('div'); veil.className='veil'; veil.innerHTML='🔒'; el.appendChild(veil); }
+    $archive.appendChild(el);
+  }
+}
+
 function renderAll(){
   const now = zonedNow(TZ);
-  const idx = Math.min(dayIndex(now, START), MESSAGES.length-1);
-  const unlocked = Math.max(0, Math.min(idx, MESSAGES.length-1));
+  const nowYMD = ymdInTZ(TZ, now);
+  const unlocked = computeUnlockedIndex(nowYMD);
   $today.textContent = MESSAGES[unlocked] || '—';
   $chipNum.textContent = `اليوم ${unlocked+1}`;
   $dateNow.textContent = fmtFull(now, TZ);
   buildArchive(unlocked);
   updateCount(now);
 }
-function buildArchive(unlocked){
-  $archive.innerHTML='';
-  for(let i=0;i<MESSAGES.length;i++){
-    const el=document.createElement('div'); el.className='item'+(i<unlocked?'':' locked');
-    const title=document.createElement('h4'); title.textContent = (i<unlocked?`اليوم ${i+1}`:'مغلق');
-    const p=document.createElement('p'); p.textContent = i<unlocked? MESSAGES[i] : 'تُفتح عند منتصف الليل ✨';
-    el.appendChild(title); el.appendChild(p);
-    if(i>=unlocked){ const veil=document.createElement('div'); veil.className='veil'; veil.innerHTML='🔒'; el.appendChild(veil); }
-    $archive.appendChild(el);
-  }
-}
+
 function updateCount(now){
   const target = nextMidnight(now);
   const ms = Math.max(0, target-now);
@@ -329,15 +355,20 @@ function updateCount(now){
   setTimerProgress(ms);
   $nextExact.textContent = `الرسالة القادمة: ${fmtFull(target, TZ)}`;
 }
+
 function tick(){
-  const now=zonedNow(TZ); const d=dayIndex(now, START);
+  const now=zonedNow(TZ);
+  const nowYMD = ymdInTZ(TZ, now);
+  const d = computeUnlockedIndex(nowYMD);
   updateCount(now); $dateNow.textContent=fmtFull(now,TZ);
   if(d!==lastDay){ lastDay=d; renderAll(); burstHearts(); }
 }
 
 /* =================== نجوم متحركة =================== */
 const scvs=document.getElementById('stars'); const sctx=scvs.getContext('2d');
-let SW=innerWidth, SH=innerHeight; function srs(){ SW=innerWidth; SH=innerHeight; scvs.width=SW; scvs.height=SH; } srs(); addEventListener('resize', srs);
+let SW=innerWidth, SH=innerHeight;
+function srs(){ SW=innerWidth; SH=innerHeight; scvs.width=SW; scvs.height=SH; }
+srs(); addEventListener('resize', srs);
 const STARS=[...Array(120)].map(()=>({x:Math.random()*SW,y:Math.random()*SH,r:Math.random()*1.2+0.4, s:Math.random()*0.4+0.2, a:Math.random()}));
 (function starTick(){ sctx.clearRect(0,0,SW,SH); STARS.forEach(st=>{ st.a+=0.02; const twinkle=(Math.sin(st.a)+1)/2*0.7+0.3; sctx.fillStyle=`rgba(255,255,255,${twinkle})`; sctx.beginPath(); sctx.arc(st.x,st.y,st.r,0,Math.PI*2); sctx.fill(); }); requestAnimationFrame(starTick) })();
 
@@ -358,7 +389,7 @@ $('brandHold').addEventListener('pointerdown',()=>{ holdTimer=setTimeout(()=>ope
 ['pointerup','pointerleave'].forEach(ev=> $('brandHold').addEventListener(ev, ()=> clearTimeout(holdTimer)));
 function openAdmin(){
   $('msgInput').value = (load(KEY_MSGS, DEFAULT_MESSAGES)||[]).join('\n');
-  $('startInput').value = (new Date(START)).toISOString().slice(0,10);
+  $('startInput').value = START_YMD;
   $('tzInput').value = TZ;
   dlg.setAttribute('open','');
 }
@@ -367,11 +398,23 @@ $('saveBtn').onclick = ()=>{
   const lines=$('msgInput').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
   if(!lines.length) return alert('أضيفي رسالة واحدة على الأقل');
   save(KEY_MSGS, lines); MESSAGES=lines;
-  const s=$('startInput').value; const d=new Date(s+'T00:00:00'); if(!isNaN(+d)){ START=d; save(KEY_START, d.toISOString()); }
+
+  const s=$('startInput').value.trim();
+  if(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(s)){ START_YMD=s; save(KEY_START_DATE, START_YMD); }
+
   const tz=$('tzInput').value.trim()||DEFAULT_TZ; TZ=tz; save(KEY_TZ, tz);
   dlg.removeAttribute('open'); lastDay=-1; renderAll(); burstHearts();
 };
-$('resetBtn').onclick = ()=>{ if(!confirm('استرجاع الإعدادات الافتراضية؟')) return; save(KEY_MSGS, DEFAULT_MESSAGES); save(KEY_START, DEFAULT_START.toISOString()); save(KEY_TZ, DEFAULT_TZ); save(KEY_SRC, ''); MESSAGES=DEFAULT_MESSAGES; START=DEFAULT_START; TZ=DEFAULT_TZ; SRC=null; dlg.removeAttribute('open'); lastDay=-1; renderAll(); };
+$('resetBtn').onclick = ()=>{
+  if(!confirm('استرجاع الإعدادات الافتراضية؟')) return;
+  save(KEY_MSGS, DEFAULT_MESSAGES);
+  const defStart=ymdInTZ(DEFAULT_TZ, new Date());
+  save(KEY_START_DATE, defStart);
+  save(KEY_TZ, DEFAULT_TZ);
+  save(KEY_SRC, '');
+  MESSAGES=DEFAULT_MESSAGES; START_YMD=defStart; TZ=DEFAULT_TZ; SRC=null;
+  dlg.removeAttribute('open'); lastDay=-1; renderAll();
+};
 
 // Import (JSON or TXT)
 $('importBtn').onclick = ()=> $('fileInput').click();
@@ -381,9 +424,11 @@ $('fileInput').addEventListener('change', async (e)=>{
   try{
     const j=JSON.parse(txt);
     if(Array.isArray(j.messages)){
+      const tz = j.timezone || TZ || DEFAULT_TZ;
       save(KEY_MSGS, j.messages.map(String)); MESSAGES=j.messages.map(String);
-      if(j.start_date){ const d=new Date(j.start_date+'T00:00:00'); if(!isNaN(+d)){ START=d; save(KEY_START, d.toISOString()); }}
-      if(j.timezone){ TZ=j.timezone; save(KEY_TZ, TZ); }
+      const sd = (j.start_date && /\d{4}-\d{2}-\d{2}/.test(j.start_date)) ? j.start_date : ymdInTZ(tz, new Date());
+      START_YMD = sd; save(KEY_START_DATE, sd);
+      TZ = tz; save(KEY_TZ, TZ);
     }else{ throw 0 }
   }catch{
     const lines = txt.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
@@ -394,7 +439,7 @@ $('fileInput').addEventListener('change', async (e)=>{
 
 // Export JSON
 $('exportBtn').onclick = ()=>{
-  const data={ start_date: new Date(START).toISOString().slice(0,10), timezone: TZ, messages: MESSAGES };
+  const data={ start_date: START_YMD, timezone: TZ, messages: MESSAGES };
   download('messages.json', JSON.stringify(data, null, 2));
 };
 
@@ -403,16 +448,37 @@ $('reloadRemote').onclick = async ()=>{
   const qs = new URLSearchParams(location.search);
   const src = qs.get('src') || SRC || prompt('أدخلي رابط messages.json');
   if(!src) return;
-  try{ const {messages,start,tz} = await fetchMessagesFrom(src);
-    save(KEY_MSGS,messages); save(KEY_START,start.toISOString()); save(KEY_TZ,tz); save(KEY_SRC,src);
-    MESSAGES=messages; START=start; TZ=tz; SRC=src; lastDay=-1; renderAll(); alert('تم التحميل من الرابط ✅');
+  try{
+    const {messages,start_date,tz} = await fetchMessagesFrom(src);
+    save(KEY_MSGS,messages); save(KEY_START_DATE,start_date); save(KEY_TZ,tz); save(KEY_SRC,src);
+    MESSAGES=messages; START_YMD=start_date; TZ=tz; SRC=src; lastDay=-1; renderAll(); alert('تم التحميل من الرابط ✅');
   }catch(e){ alert('تعذر التحميل: '+e.message); }
+};
+
+/* =================== Buttons (share/copy) =================== */
+$('copyBtn').onclick = async ()=>{
+  try{
+    await navigator.clipboard.writeText(location.href);
+    alert('تم نسخ الرابط ✅');
+  }catch{
+    prompt('انسخي الرابط يدويًا:', location.href);
+  }
+};
+$('shareBtn').onclick = async ()=>{
+  try{
+    if(navigator.share){
+      await navigator.share({title: document.title, text: 'رسالة حب تُفتح كل منتصف ليل', url: location.href});
+    }else{
+      await navigator.clipboard.writeText(location.href);
+      alert('لا يدعم جهازك المشاركة المباشرة. تم نسخ الرابط ✅');
+    }
+  }catch(e){ /* user cancelled */ }
 };
 
 /* =================== START =================== */
 (function init(){
   tryLoadExternal().then(ext=>{
-    if(ext){ MESSAGES=ext.messages; START=ext.start; TZ=ext.tz; SRC=ext.src; }
+    if(ext){ MESSAGES=ext.messages; START_YMD=ext.start_date; TZ=ext.tz; SRC=ext.src; }
     renderAll(); setInterval(tick, 1000);
   });
 })();
